@@ -11,6 +11,16 @@ pipeline {
             }
         }
 
+        stage('VALIDATE') {
+            steps {
+                script {
+                    sh 'terraform validate'
+                }
+            }
+        }
+
+
+        
        stage('Azure Login') {
            steps {
                script {
