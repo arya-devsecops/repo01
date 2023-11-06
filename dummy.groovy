@@ -10,5 +10,12 @@ pipeline {
         )
     }
  }
+        stage('init') {
+            steps {
+                script {
+                    sh 'terraform init'
+                }
+            }
+}
     }
 }
