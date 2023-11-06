@@ -1,3 +1,11 @@
-echo "hello git my name is Arya Kumar Arya"
-date
+pipeline {
+    agent any
 
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
