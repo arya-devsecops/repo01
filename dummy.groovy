@@ -13,8 +13,9 @@ pipeline {
         stage('init') {
             steps {
                 // Use Terraform plugin to initialize Terraform
-                terraformInit(
-                    credentialsId: 'e7e08133-d73a-4ace-80b0-d8f7a5251879', // Specify your Terraform credentials
+#                terraformInit(
+                    //credentialsId: 'e7e08133-d73a-4ace-80b0-d8f7a5251879', // Specify your Terraform credentials
+    sh 'terraform init'
                 )
             }
         }
