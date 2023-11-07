@@ -48,14 +48,16 @@ pipeline {
                 }
             }
         }
-           always('to logout') {
-            // Clean up or post-processing steps can be added here
-            script {
-                echo 'Logging out from Azure'
-                withCredentials([azureServicePrincipal(credentialsId: 'AppService_Principal', usePassword: true)]) {
-                    sh 'az logout'
+        stage('Logout from Azure') {
+            steps {
+                script {
+                    echo 'Logging out from Azure'
+                    withCredentials([azureServicePrincipal(credentialsId: 'AppService_Principal', usePassword: true)]) {
+                        sh 'az logout'
+                    }
                 }
             }
         }
     }
 }
+           
