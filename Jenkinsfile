@@ -48,8 +48,8 @@ pipeline {
                 }
             }
         }
-        stage('Logout from Azure') {
-            steps {
+        post('Logout from Azure') {
+            always {
                 script {
                     echo 'Logging out from Azure'
                     withCredentials([azureServicePrincipal(credentialsId: 'AppService_Principal', usePassword: true)]) {
