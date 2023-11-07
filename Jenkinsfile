@@ -34,20 +34,20 @@ pipeline {
                 }
             }
         }
-        stage('Terraform Apply') {
-            steps {
-                script {
-                    sh 'terraform apply --auto-aprove'
-                }
-            }
-        }
-        stage('terraform destroy') {
-            steps {
-                script {
-                    sh 'terraform destroy --auto-approve'
-                }
-            }
-        }
+        // stage('Terraform Apply') {
+        //     steps {
+        //         script {
+        //             sh 'terraform apply --auto-aprove'
+        //         }
+        //     }
+        // }
+        // stage('terraform destroy') {
+        //     steps {
+        //         script {
+        //             sh 'terraform destroy --auto-approve'
+        //         }
+        //     }
+        // }
         // post('Logout from Azure') {
         //     always {
         //         script {
