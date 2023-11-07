@@ -34,13 +34,13 @@ pipeline {
                 }
             }
         }
-        // stage('Terraform Apply') {
-        //     steps {
-        //         script {
-        //             sh 'terraform apply --auto-aprove'
-        //         }
-        //     }
-        // }
+        stage('Terraform Apply') {
+            steps {
+                script {
+                    sh 'terraform apply --auto-aprove'
+                }
+            }
+        }
         // stage('terraform destroy') {
         //     steps {
         //         script {
