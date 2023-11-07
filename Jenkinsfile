@@ -37,14 +37,14 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 script {
-                    sh 'terraform apply'
+                    sh 'terraform apply --auto-aprove'
                 }
             }
         }
         post {
             always {
                 script {
-                    sh 'terraform destroy -auto-approve'
+                    sh 'terraform destroy --auto-approve'
                 }
             }
         }
