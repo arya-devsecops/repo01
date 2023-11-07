@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-          stage('Checkout') {
+        stage('Checkout') {
             steps {
                 git(
                     branch: 'main',  // Update branch name if needed
@@ -10,7 +10,6 @@ pipeline {
                 )
             }
         }
-    }
         stage('Azure Login') {
             steps {
                 script {
@@ -24,7 +23,6 @@ pipeline {
                 }
             }
         }
-
         stage('init') {
             steps {
                 script {
@@ -33,3 +31,4 @@ pipeline {
             }
         }
     }
+}
