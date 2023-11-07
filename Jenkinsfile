@@ -30,7 +30,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    sh 'terraform plan -refresh=true -lock=false'
+                    sh 'terraform plan'
                 }
             }
         }
