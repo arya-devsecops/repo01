@@ -10,7 +10,7 @@ pipeline {
                 )
             }
         }
-
+    }
         stage('Azure Login') {
             steps {
                 script {
@@ -34,12 +34,4 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            // Add cleanup steps here if needed
-            sh 'az logout'  // Log out from Azure at the end of the pipeline
-        }
-    }
 }
-
-
