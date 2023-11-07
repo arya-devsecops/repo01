@@ -41,5 +41,12 @@ pipeline {
                 }
             }
         }
+        post {
+            allways {
+                script {
+                    sh 'terraform destroy'
+                }
+            }
     }
+}
 }
