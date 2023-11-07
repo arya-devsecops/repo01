@@ -30,7 +30,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    sh 'terraform plan'
+                    sh 'terraform plan -refresh=true -lock=false'
                 }
             }
         }
@@ -42,11 +42,11 @@ pipeline {
             }
         }
         post {
-            allways {
+            always {
                 script {
-                    sh 'terraform destroy'
+                    sh 'terraform destroy -auto-approve'
                 }
             }
+        }
     }
-}
 }
