@@ -1,10 +1,10 @@
 pipeline {
     agent any
     environment {
-        ARM_CLIENT_ID     = credentials('daca292c-896c-4ee2-a083-c6cfbc08acf1')
-        ARM_CLIENT_SECRET = credentials('b39738f5-8b7a-4e48-acbc-59f8368b651b')
-        ARM_SUBSCRIPTION_ID = '44072bee-09d8-4fd1-9150-46a2662697d7'
-        ARM_TENANT_ID = '3cc22669-453b-4e89-8eb5-29528e2c8a69'
+        ARM_CLIENT_ID         = "b90f940f-e258-4200-906e-55e1f693b73f"
+        ARM_CLIENT_SECRET     = "tnY8Q~TJVyOMPnN0ZnTDm.zK9P5b3sQL1K1msb4V"
+        ARM_SUBSCRIPTION_ID   = "44072bee-09d8-4fd1-9150-46a2662697d7"
+        ARM_TENANT_ID         = "3cc22669-453b-4e89-8eb5-29528e2c8a69"
     }
     stages {
         stage('Checkout') {
