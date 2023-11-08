@@ -20,6 +20,13 @@ pipeline {
                 }
             }
         }
+        stage('terraform format check') {
+            steps{
+                script {
+                    sh 'terraform fmt'
+                }
+            }
+        }
         stage('terraform validate') {
             steps {
                 script {
