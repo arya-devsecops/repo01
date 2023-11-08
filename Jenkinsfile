@@ -2,13 +2,13 @@ pipeline {
     agent any
 options {
   ansiColor('xterm')
-}
+    }
     environment {
         ARM_CLIENT_ID         = "b90f940f-e258-4200-906e-55e1f693b73f"
         ARM_CLIENT_SECRET     = "tnY8Q~TJVyOMPnN0ZnTDm.zK9P5b3sQL1K1msb4V"
         ARM_SUBSCRIPTION_ID   = "44072bee-09d8-4fd1-9150-46a2662697d7"
         ARM_TENANT_ID         = "3cc22669-453b-4e89-8eb5-29528e2c8a69"
-    }
+        }
     stages {
         stage('Checkout') {
             steps {
@@ -47,8 +47,7 @@ options {
            stage('Terraform Apply') {
              steps { 
                  timeout(time: 01, unit: "MINUTES") {
-                        input {
-                            message: 'Do you want to approve the deployment for create ?' ,ok: 'yes'
+                        input message: 'Do you want to approve the deployment for create ?' ,ok: 'yes'
                         }
                  script {
                      sh 'terraform apply --auto-approve'
@@ -64,6 +63,3 @@ options {
              }
         }
     }
-}
-
-
