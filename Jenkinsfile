@@ -3,8 +3,6 @@ pipeline {
 options {
   ansiColor('xterm')
 }
-
-
     environment {
         ARM_CLIENT_ID         = "b90f940f-e258-4200-906e-55e1f693b73f"
         ARM_CLIENT_SECRET     = "tnY8Q~TJVyOMPnN0ZnTDm.zK9P5b3sQL1K1msb4V"
@@ -59,9 +57,10 @@ options {
              steps {
                  script {
                      sh 'terraform destroy --auto-approve'
+                     }
                  }
              }
-         }
+        }
     }
 }
 
