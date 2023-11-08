@@ -4,6 +4,5 @@ terraform {
     storage_account_name = "myterraformstorageaccount"
     container_name       = "az_storage"
     key                  = "terraform.tfstate"
-    access_key           = "myaccesskey"
   }
 }
