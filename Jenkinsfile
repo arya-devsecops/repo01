@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    options {
+  ansiColor('vga')
+}
+
     environment {
         ARM_CLIENT_ID         = "b90f940f-e258-4200-906e-55e1f693b73f"
         ARM_CLIENT_SECRET     = "tnY8Q~TJVyOMPnN0ZnTDm.zK9P5b3sQL1K1msb4V"
@@ -16,45 +20,45 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    sh 'terraform init -no-color'
+                    sh 'terraform init'
                 }
             }
         }
         stage('terraform format check') {
             steps{
                 script {
-                    sh 'terraform fmt -no-color'
+                    sh 'terraform fmt'
                 }
             }
         }
         stage('terraform validate') {
             steps {
                 script {
-                    sh 'terraform validate -no-color'
+                    sh 'terraform validate'
                 }
             }
         }    
-        stage('Terraform Plan') {
-            steps {
-                script {
-                    sh 'terraform plan -no-color'
-                }
-            }
-        }
-        stage('Terraform Apply') {
-            steps {
-                script {
-                    sh 'terraform apply --auto-approve -no-color'
-                }
-            }
-        }
-        stage('terraform destroy') {
-            steps {
-                script {
-                    sh 'terraform destroy --auto-approve -no-color'
-                }
-            }
-        }
+        // stage('Terraform Plan') {
+        //     steps {
+        //         script {
+        //             sh 'terraform plan'
+        //         }
+        //     }
+        // }
+        // stage('Terraform Apply') {
+        //     steps {
+        //         script {
+        //             sh 'terraform apply --auto-approve'
+        //         }
+        //     }
+        // }
+        // stage('terraform destroy') {
+        //     steps {
+        //         script {
+        //             sh 'terraform destroy --auto-approve'
+        //         }
+        //     }
+        // }
         //   post {
         //       always {
         //           cleanWs()
