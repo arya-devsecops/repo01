@@ -1,7 +1,7 @@
 pipeline {
     agent any
     options {
-  ansiColor('vga')
+  ansiColor('css')
 }
 
     environment {
