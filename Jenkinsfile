@@ -48,16 +48,5 @@ pipeline {
                 }
             }
         }
-        // post('Logout from Azure') {
-        //     always {
-        //         script {
-        //             echo 'Logging out from Azure'
-        //             withCredentials([azureServicePrincipal(credentialsId: 'AppService_Principal', usePassword: true)]) {
-        //                 sh 'az logout'
-        //             }
-        //         }
-        //     }
-        // }
     }
 }
-           
