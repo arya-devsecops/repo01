@@ -46,8 +46,10 @@ options {
          }
            stage('Terraform Apply') {
              steps { 
-                 // timeout(time: 01, unit: "MINUTES") {
-                 //        input message: 'Do you want to approve the deployment?', ok: 'Yes'
+                 timeout(time: 01, unit: "MINUTES") {
+                        input {
+                            message: 'Do you want to approve the deployment for create ?' ,ok: 'yes'
+                        }
                  script {
                      sh 'terraform apply --auto-approve'
                  }
@@ -62,5 +64,6 @@ options {
              }
         }
     }
+}
 
 
