@@ -1,8 +1,9 @@
 pipeline {
     agent any
-    options {
-  ansiColor('css')
+options {
+  ansiColor('gnome-terminal')
 }
+
 
     environment {
         ARM_CLIENT_ID         = "b90f940f-e258-4200-906e-55e1f693b73f"
