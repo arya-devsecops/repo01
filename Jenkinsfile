@@ -41,13 +41,13 @@ pipeline {
                 }
             }
         }
-        // stage('terraform destroy') {
-        //     steps {
-        //         script {
-        //             sh 'terraform destroy --auto-approve'
-        //         }
-        //     }
-        // }
+        stage('terraform destroy') {
+            steps {
+                script {
+                    sh 'terraform destroy --auto-approve'
+                }
+            }
+        }
         // post('Logout from Azure') {
         //     always {
         //         script {
