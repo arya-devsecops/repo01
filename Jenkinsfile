@@ -30,39 +30,39 @@ options {
                 }
             }
         }
-        stage('terraform validate') {
-            steps {
-                script {
-                    sh 'terraform validate'
-                }
-            }
-        }    
-         stage('Terraform Plan') {
-             steps {
-                 script {
-                     sh 'terraform plan'
-                 }
-             }
-         }
-           stage('Terraform Apply') {
-             steps { 
-                 timeout(time: 01, unit: "MINUTES") {
-                        input message: 'Do you want to approve the deployment for create ?' ,ok: 'yes'
-                        }
-                 script {
-                     sh 'terraform apply --auto-approve'
-                 }
-             }
-         }
-         stage('terraform destroy') {
-             steps {
-                  timeout(time: 01, unit: "MINUTES") {
-                        input message: 'Do you want to approve the deployment for create ?' ,ok: 'yes'
-                 script {
-                     sh 'terraform destroy --auto-approve'
-                     }
-                 }
-             }
-        }
+        // stage('terraform validate') {
+        //     steps {
+        //         script {
+        //             sh 'terraform validate'
+        //         }
+        //     }
+        // }    
+        //  stage('Terraform Plan') {
+        //      steps {
+        //          script {
+        //              sh 'terraform plan'
+        //          }
+        //      }
+        //  }
+        //    stage('Terraform Apply') {
+        //      steps { 
+        //          timeout(time: 01, unit: "MINUTES") {
+        //                 input message: 'Do you want to approve the deployment for create ?' ,ok: 'yes'
+        //                 }
+        //          script {
+        //              sh 'terraform apply --auto-approve'
+        //          }
+        //      }
+        //  }
+        //  stage('terraform destroy') {
+        //      steps {
+        //           timeout(time: 01, unit: "MINUTES") {
+        //                 input message: 'Do you want to approve the deployment for create ?' ,ok: 'yes'
+        //          script {
+        //              sh 'terraform destroy --auto-approve'
+        //              }
+        //          }
+        //      }
+        // }
     }
 }
