@@ -12,14 +12,13 @@ options {
     stages {
         stage('Checkout') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'git branch: \'main\', url: \'https://github.com/Arya5596/repo01\'']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'gitcredentials', url: 'https://github.com/Arya5596/repo01']])
                 
             }
         }
         stage('Terraform Init') {
-            steps {
-                
-                    sh 'terraform init'
+            steps{
+                sh 'terraform init'
                 }
         }
         stage('terraform format check') {
