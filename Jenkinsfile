@@ -16,11 +16,49 @@ options {
                 
             }
         }
-        stage('terraform init') {
+          stage('Terraform Init') {
             steps {
-                sh 'terraform init'
+                script {
+                    sh 'terraform init'
+                }
             }
         }
+        stage('terraform format check') {
+            steps{
+                script {
+                    sh 'terraform fmt'
+                }
+            }
+        }
+        stage('terraform validate') {
+            steps {
+                script {
+                    sh 'terraform validate'
+                }
+            }
+        }    
+        stage('Terraform Plan') {
+            steps {
+                script {
+                    // terraform plan output saved in plan.output file
+                        sh 'terraform plan -out=plan.out'
+                }
+            }
+        }
+       stage('Conditional Terraform Apply') {
+     when {
+        expression {
+            // Only apply if the plan was successful
+                return currentBuild.resultIsBetterOrEqualTo('SUCCESS')
+        }
+    }
+        steps {
+            script {
+            // Run Terraform apply using the saved plan file
+                    sh 'terraform apply "plan.out"'
+                }
+            }
+       }
       
     }
 }
