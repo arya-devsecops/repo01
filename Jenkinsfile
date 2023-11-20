@@ -18,10 +18,9 @@ options {
         }
         stage('Terraform Init') {
             steps {
-                script {
+                
                     sh 'terraform init'
                 }
-            }
         }
         stage('terraform format check') {
             steps{
@@ -30,20 +29,20 @@ options {
                 }
             }
         }
-        // stage('terraform validate') {
-        //     steps {
-        //         script {
-        //             sh 'terraform validate'
-        //         }
-        //     }
-        // }    
-        //  stage('Terraform Plan') {
-        //      steps {
-        //          script {
-        //              sh 'terraform plan'
-        //          }
-        //      }
-        //  }
+        stage('terraform validate') {
+            steps {
+                script {
+                    sh 'terraform validate'
+                }
+            }
+        }    
+         stage('Terraform Plan') {
+             steps {
+                 script {
+                     sh 'terraform plan'
+                 }
+             }
+         }
         //    stage('Terraform Apply') {
         //      steps { 
         //          timeout(time: 01, unit: "MINUTES") {
