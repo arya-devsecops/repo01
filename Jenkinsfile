@@ -54,6 +54,7 @@ options {
     }
         steps {
             script {
+                input "do you want to proceed"
             // Run Terraform apply using the saved plan file
                     sh 'terraform apply "plan.out"'
                 }
