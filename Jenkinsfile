@@ -11,7 +11,7 @@ options {
         ARM_TENANT_ID         = "3cc22669-453b-4e89-8eb5-29528e2c8a69"
         }
     stages {
-        stage('Checkout') {
+        stage('Git Checkout') {
             steps {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'repo', url: 'https://github.com/Arya5596/repo01']])
                 
@@ -24,7 +24,7 @@ options {
                 }
             }
         }
-        stage('terraform format check') {
+        stage('Terraform code format check') {
             steps{
                 script {
                     sh 'terraform fmt'
