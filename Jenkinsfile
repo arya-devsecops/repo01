@@ -5,10 +5,14 @@ options {
   ansiColor('xterm')
     }
     environment {
-        ARM_CLIENT_ID         = "b90f940f-e258-4200-906e-55e1f693b73f"
-        ARM_CLIENT_SECRET     = "tnY8Q~TJVyOMPnN0ZnTDm.zK9P5b3sQL1K1msb4V"
-        ARM_SUBSCRIPTION_ID   = "44072bee-09d8-4fd1-9150-46a2662697d7"
-        ARM_TENANT_ID         = "3cc22669-453b-4e89-8eb5-29528e2c8a69"
+        ARM_CLIENT_ID         = credentials('CLIENT_ID')
+        ARM_CLIENT_SECRET     = credentials('CLIENT_SECRET')
+        ARM_SUBSCRIPTION_ID   = credentials('SUBSCRIPTION_ID')
+        ARM_TENANT_ID         = credentials('TENANT_ID')
+        // ARM_CLIENT_ID         = "b90f940f-e258-4200-906e-55e1f693b73f"
+        // ARM_CLIENT_SECRET     = "tnY8Q~TJVyOMPnN0ZnTDm.zK9P5b3sQL1K1msb4V"
+        // ARM_SUBSCRIPTION_ID   = "44072bee-09d8-4fd1-9150-46a2662697d7"
+        // ARM_TENANT_ID         = "3cc22669-453b-4e89-8eb5-29528e2c8a69"
         }
     stages {
         stage('Git Checkout') {
