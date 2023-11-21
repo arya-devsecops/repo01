@@ -63,17 +63,17 @@ options {
                 }
             }
        }
-        // stage('Terraform Destroy'){
-        //     steps{
-        //         script {
-        //             timeout(time: 1,unit: 'MINUTES'){
-        //             input "Do you want to destroy all resources"
-        //             }
-        //             // to destroy the all resource
-        //             sh 'terraform destroy'
-        //         }
-        //     }
-        // }
+        stage('Terraform Destroy'){
+            steps{
+                script {
+                    timeout(time: 1,unit: 'MINUTES'){
+                    input "Do you want to destroy all resources"
+                    }
+                    // to destroy the all resource
+                    sh 'terraform destroy --auto-approve'
+                }
+            }
+        }
       
     }
 }
