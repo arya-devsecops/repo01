@@ -1,4 +1,4 @@
-parameters([choice(name: 'action' , choices: ['Plan' , 'Apply' , 'Destroy'] , description: 'select the action')])
+parameters([choice(name: 'Action' , choices: ['Plan' , 'Apply' , 'Destroy'] , description: 'Please select the action')])
 pipeline {
     agent any
 options {
@@ -30,50 +30,43 @@ options {
                     sh 'terraform fmt'
                 }
             }
-        }
-        stage('terraform validate') {
+        } 
+        stage('Terraform validate') {
             steps {
                 script {
                     sh 'terraform validate'
-                }
-            }
-        }    
-        stage('Terraform Plan') {
-            steps {
-                script {
-                    // terraform plan output saved in plan.output file
-                        sh 'terraform plan -out=plan.out'
-                }
-            }
-        }
-       stage('Conditional Terraform Apply') {
-     when {
-        expression {
-            // Only apply if the plan was successful
-                return currentBuild.resultIsBetterOrEqualTo('SUCCESS')
-        }
-    }
-        steps {
-            script {
-                timeout(time: 1,unit: 'MINUTES'){
-                input "Do you want to proceed"
-                }
-            // Run Terraform apply using the saved plan file
-                    sh 'terraform apply "plan.out"'
-                }
-            }
-       }
-        stage('Terraform Destroy'){
-            steps{
-                script {
-                    timeout(time: 1,unit: 'MINUTES'){
-                    input "Do you want to destroy all resources"
+                    switch (params.Action) {
+                        
+                        case'Plan':
+                        stage('Terraform plan'){
+                            sh 'terraform plan
+                        }
+                        break
+                        
+                        case'Apply':
+                        stage('Terraform Apply') {
+                             // terraform plan output saved in plan.output file
+                            sh 'terraform plan -out=plan.out'
+                            timeout(time: 1,unit: 'MINUTES'){
+                                input "Do you want to proceed"
+                            }
+                             sh 'terraform apply "plan.out"'
+                        }
+                        break
+                        
+                        case'Destroy':
+                        stage('Terraform Destroy'){
+                            sh 'terraform plan'
+                            timeout(time: 1,unit: 'MINUTES'){
+                                input "Do you want to destroy all resources"
+                            }
+                            // to destroy the all resource
+                            sh 'terraform destroy --auto-approve'
+                        }
                     }
-                    // to destroy the all resource
-                    sh 'terraform destroy --auto-approve'
                 }
             }
         }
-      
     }
 }
+                
