@@ -1,4 +1,4 @@
-properties([parameters([choice(name: 'action' , choices: ['Plan' , 'Apply' , 'Destroy'] , description: 'select the action')])])
+parameters([choice(name: 'action' , choices: ['Plan' , 'Apply' , 'Destroy'] , description: 'select the action')])
 pipeline {
     agent any
 options {
