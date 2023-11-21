@@ -39,7 +39,7 @@ options {
                         
                         case 'Plan':
                         stage('Terraform plan'){
-                            sh 'terraform plan'
+                            sh 'terraform plan -out=plan.out'
                         }
                         break
                         
