@@ -47,7 +47,7 @@ options {
                         stage('Terraform Apply') {
                              // terraform plan output saved in plan.output file
                             sh 'terraform plan -out=plan.out'
-                            timeout(time: 1,unit: 'MINUTES'){
+                            timeout(time: 1, unit: 'MINUTES'){
                                 input "Do you want to proceed"
                             }
                              sh 'terraform apply "plan.out"'
@@ -56,12 +56,12 @@ options {
                         
                         case 'Destroy':
                         stage('Terraform Destroy'){
-                            // sh 'terraform plan'
-                            timeout(time: 1,unit: 'MINUTES'){
+                            sh 'terraform plan -out=plan.out'
+                            timeout(time: 1, unit: 'MINUTES'){
                                 input "Do you want to destroy all resources"
                             }
                             // to destroy the all resource
-                            sh 'terraform destroy --auto-approve'
+                            sh 'terraform destroy "plan.out" --auto-approve'
                         }
                     }
                 }
