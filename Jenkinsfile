@@ -63,6 +63,14 @@ options {
                 }
             }
        }
+        stage('Terraform Destroy'){
+            steps{
+                script {
+                    // to destroy the all resource
+                    sh 'terraform destroy'
+                }
+            }
+        }
       
     }
 }
