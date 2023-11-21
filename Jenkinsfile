@@ -35,11 +35,11 @@ options {
             steps {
                 script {
                     sh 'terraform validate'
-                    switch(params.Action) {
+                    switch (params.Action) {
                         
                         case'Plan':
                         stage('Terraform plan'){
-                            sh 'terraform plan
+                            sh 'terraform plan'
                         }
                         break
                         
