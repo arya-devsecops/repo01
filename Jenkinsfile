@@ -56,13 +56,14 @@ options {
                         
                         case 'Destroy':
                         stage('Terraform Destroy'){
-                            sh 'terraform plan -out=plan.out'
+                            sh 'terraform plan'
                             timeout(time: 1, unit: 'MINUTES'){
                                 input "Do you want to destroy all resources"
                             }
                             // to destroy the all resource
-                            sh 'terraform destroy "plan.out" --auto-approve'
+                            sh 'terraform destroy --auto-approve'
                         }
+                        break
                     }
                 }
             }
