@@ -37,13 +37,13 @@ options {
                     sh 'terraform validate'
                     switch (params.Action) {
                         
-                        case'Plan':
+                        case 'Plan':
                         stage('Terraform plan'){
                             sh 'terraform plan'
                         }
                         break
                         
-                        case'Apply':
+                        case 'Apply':
                         stage('Terraform Apply') {
                              // terraform plan output saved in plan.output file
                             sh 'terraform plan -out=plan.out'
@@ -54,9 +54,9 @@ options {
                         }
                         break
                         
-                        case'Destroy':
+                        case 'Destroy':
                         stage('Terraform Destroy'){
-                            sh 'terraform plan'
+                            // sh 'terraform plan'
                             timeout(time: 1,unit: 'MINUTES'){
                                 input "Do you want to destroy all resources"
                             }
